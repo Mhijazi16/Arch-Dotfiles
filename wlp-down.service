@@ -1,0 +1,12 @@
+[Unit]
+Description=Set wlp interface down at boot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStartPre=/usr/bin/sleep 5
+ExecStart=/usr/bin/ip link set wlp45s0 down
+
+[Install]
+WantedBy=multi-user.target
